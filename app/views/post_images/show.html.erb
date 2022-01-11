@@ -4,6 +4,19 @@
   <p>説明：<%= @post_image.caption %></p>
   <p>ユーザーネーム：<%= @post_image.user.name %></p>
   <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+  <div id="favorite_buttons_<%= @post_image.id %>">
+  <%= render "favorites/favorite", post_image: @post_image %>
+  </div>
+  <td>コメント数：<%= @post_image.post_comments.count %></td>
+  <div id="comments_area">
+   <%= render 'post_comments/post_comment', post_image: @post_image %>
+  </div>
+  <div class="new-comment">
+   <%= form_with(model:[@post_image, @post_comment]) do |f| %>
+   <%= f.text_area :comment, placeholder: "コメントをここに" %>
+   <%= f.submit "送信する" %>
+   <% end %>
+  </div>
   <% if @post_image.user == current_user %>
     <%= link_to "削除", post_image_path(@post_image), method: :delete %>
     |
