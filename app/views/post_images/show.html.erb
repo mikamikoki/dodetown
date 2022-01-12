@@ -1,3 +1,9 @@
+<% if flash[:notice] %>
+  <p id="notice">
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+
 <div>
   <%= attachment_image_tag @post_image, :image %>
   <p>ショップ名：<%= @post_image.shop_name %></p>
@@ -12,10 +18,7 @@
    <%= render 'post_comments/post_comment', post_image: @post_image %>
   </div>
   <div class="new-comment">
-   <%= form_with(model:[@post_image, @post_comment]) do |f| %>
-   <%= f.text_area :comment, placeholder: "コメントをここに" %>
-   <%= f.submit "送信する" %>
-   <% end %>
+   <%= render 'post_comments/form', post_image: @post_image, post_comment: @post_comment %>
   </div>
   <% if @post_image.user == current_user %>
     <%= link_to "削除", post_image_path(@post_image), method: :delete %>
