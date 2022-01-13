@@ -77,6 +77,9 @@ gem 'kaminari'
 gem 'pry-byebug'
 
 gem 'dotenv-rails'
+group :production do
+gem 'mysql2'
+end
 
 gem 'rubocop', require:false
 gem 'rubocop-performance', require:false
