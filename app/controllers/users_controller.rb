@@ -25,6 +25,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def search
+  @input = user.search(params[:keyword])
+  respond_to do |format|
+    format.html
+    format.json
+  end
+  end
+
   print
   def user_params
     params.require(:user).permit(:name, :profile_image)
