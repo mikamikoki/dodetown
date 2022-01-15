@@ -12,7 +12,7 @@
   <td><%= link_to user_path(post_image.user) do %>
   <p><%= attachment_image_tag(post_image.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></p>
   <% end %>
-  <p>ショップ名：<%= post_image.shop_name %></p>
+  <p>店名：<%= post_image.shop_name %></p>
   <p>住所 : <%= post_image.address %></p>
   <p>説明：<%= post_image.caption %></p>
   <p>ユーザーネーム：<%= post_image.user.name %></p>
