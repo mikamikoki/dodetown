@@ -8,6 +8,9 @@ class PostImage < ApplicationRecord
   validates :shop_name, presence: true
   validates :caption, presence: true
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end

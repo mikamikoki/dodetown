@@ -6,7 +6,48 @@
 
 <div>
   <%= attachment_image_tag @post_image, :image %>
-  <p>ショップ名：<%= @post_image.shop_name %></p>
+  <p>店名：<%= @post_image.shop_name %></p>
+  <p>住所</p>
+  <p><%= @post_image.address %></p>
+  <div id="map"></div>
+  ・・・
+   <style>
+  #map{
+  height: 150px;
+  width:270px;
+  }
+  </style>
+
+  <script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @post_image.latitube %>, lng: <%= @post_image.latitube %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+        var contentString = '住所：<%= @post_image.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyB8RcCFKGNnUwDouVoEUP-zFvsGbpKDG5Y&callback=initMap">
+</script>
   <p>説明：<%= @post_image.caption %></p>
   <p>ユーザーネーム：<%= @post_image.user.name %></p>
   <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>

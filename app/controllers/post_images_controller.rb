@@ -15,11 +15,12 @@ class PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
+    binding.irb
     if @post_image.save
-    redirect_to root_path
-    flash[:notice] = "投稿しました！"
+      redirect_to root_path
+      flash[:notice] = "投稿しました！"
     else
-    render("post_images/new")
+      render("post_images/new")
     end
   end
 
@@ -47,6 +48,7 @@ class PostImagesController < ApplicationController
   private
 
   def post_image_params
-    params.require(:post_image).permit(:shop_name, :image, :caption, :address)
+    params.require(:post_image).permit(:shop_name, :image, :caption, :address, :latitube, :longitude)
   end
+
 end
