@@ -21,7 +21,7 @@
 <script type="text/javascript">
     function initMap() {
 
-        var test ={lat: <%= @post_image.latitube %>, lng: <%= @post_image.longitude %>};
+        var test ={lat: <%= @post_image.latitude %>, lng: <%= @post_image.longitude %>};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: test

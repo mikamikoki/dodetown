@@ -32,6 +32,8 @@ class PostImagesController < ApplicationController
 
   def update
    @post_image = PostImage.find(params[:id])
+   p post_image_params
+
    if @post_image.update(post_image_params)
     flash[:notice] = "編集しました！"
    redirect_to post_image_path(@post_image.id)
@@ -47,7 +49,7 @@ class PostImagesController < ApplicationController
   private
 
   def post_image_params
-    params.require(:post_image).permit(:shop_name, :image, :caption, :address, :latitube, :longitude)
+    params.require(:post_image).permit(:shop_name, :image, :caption, :address)
   end
 
 end

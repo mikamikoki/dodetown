@@ -1,5 +1,5 @@
-class AddLatitubeToPostImages < ActiveRecord::Migration[5.2]
+class AddLatitudeToPostImages < ActiveRecord::Migration[5.2]
   def change
-    add_column :post_images, :latitube, :float
+    add_column :post_images, :latitude, :float
   end
 end
