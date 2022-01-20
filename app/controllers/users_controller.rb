@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit]
 
   def index
-    @users = User.page(params[:page]).reverse_order
+   @users = User.page(params[:page]).reverse_order
   end
 
   def show
@@ -25,13 +25,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def search
-  @input = user.search(params[:keyword])
-  respond_to do |format|
-    format.html
-    format.json
-  end
-  end
 
   print
   def user_params
