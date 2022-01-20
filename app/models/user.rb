@@ -12,9 +12,4 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.search(search)
-    return user.all() unless search
-    Sumple.where('name LIKE(?)', "%#{search}%")
-  end
-
 end

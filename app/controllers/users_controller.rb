@@ -3,7 +3,15 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit]
 
   def index
-   @users = User.page(params[:page]).reverse_order
+    if params[:user].present?
+      if params[:user].empty?
+        @users = User.all
+      else
+        @users = User.where('name LIKE(?)', "%{params[:users][:keyword]}%")
+      end
+    else
+      @users = User.page(params[:page]).reverse_order
+    end
   end
 
   def show
