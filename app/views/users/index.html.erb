@@ -11,18 +11,17 @@
         </button>
       <% end %>
     </div>
-  </div>
+</div>
   <div id="index">
     <%= render "users/index", users: @users %>
   </div>
-</div>
 
 
-<script>
-document.addEventListener('turbolinks:load',function(){
-$('.search__form__input').on('keyup', function(e){
-      Rails.fire($(".search__form")[0], "submit");
-  });
-});
+<!--<script>-->
+<!--document.addEventListener('turbolinks:load',function(){-->
+<!--$('.search__form__input').on('keyup', function(e){-->
+<!--      Rails.fire($(".search__form")[0], "submit");-->
+<!--  });-->
+<!--});-->
 
-</script>
+<!--</script>-->
