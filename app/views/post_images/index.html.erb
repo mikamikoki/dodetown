@@ -1,3 +1,14 @@
-
-<%= render 'index', post_images: @post_images%>
-<%= paginate @post_images %>
+<div class="row mx-auto whiteback">
+    <div class="search mx-auto">
+      <%= form_with model: PostImage.new, method: :get, class: "search__form" do |f| %>
+        <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
+        <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+        </button>
+      <% end %>
+    </div>
+  </div>
+  <div id="index">
+   <%= render 'post_images/index', post_images: @post_images%>
+  </div>
+<!--<#%= paginate @post_images %>-->

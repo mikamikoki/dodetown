@@ -25,7 +25,16 @@
 <!--</div>-->
 <!--<#% end %>-->
 
+<svg class="p-top-kv__ttl-svg">
+  <div class="text-center">
+    <font color="#FFFF00">
+  <h1>みんなで青森のめえ〜店教えあうべ</h1>
+  </div>
+    </font>
+</svg>
+
 <div class="card-list-container py-5">
+  <% if post_images.present? %>
   <% post_images.each do |post_image| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= link_to post_image_path(post_image.id) do %>
@@ -56,5 +65,17 @@
     </div>
   </div>
   <% end %>
+  <% else %>
+    <pclass="mx-auto white">検索に合致するものはありません</p>
+  <% end %>
 </div>
 </div>
+
+<script>
+document.addEventListener('turbolinks:load',function(){
+$('.search__form__input').on('keyup', function(e){
+      Rails.fire($(".search__form")[0], "submit");
+  });
+});
+
+</script>

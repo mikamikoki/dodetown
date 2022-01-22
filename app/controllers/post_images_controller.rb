@@ -1,6 +1,14 @@
 class PostImagesController < ApplicationController
   def index
-    @post_images = PostImage.page(params[:page]).reverse_order
+    if params[:post_image].present?
+      if params[:post_image].empty?
+        @post_images = PostImage.page(params[:page]).reverse_order
+      else
+        @post_images = PostImage.where('shop_name LIKE(?)', "%#{params[:post_image][:keyword]}%")
+      end
+    else
+      @post_images = PostImage.page(params[:page]).reverse_order
+    end
   end
 
   def show
