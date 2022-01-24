@@ -5,12 +5,12 @@ class UsersController < ApplicationController
   def index
     if params[:user].present?
       if params[:user].empty?
-        @users = User.page(params[:page]).reverse_order
+        @users = User.page(params[:page]).per(8)
       else
         @users = User.where('name LIKE(?)', "%#{params[:user][:keyword]}%")
       end
     else
-      @users = User.page(params[:page]).reverse_order
+      @users = User.page(params[:page]).per(8)
     end
   end
 
