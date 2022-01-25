@@ -28,3 +28,25 @@
   margin-bottom: 0;
   padding-bottom: 0.5rem;
 }
+
+.edit_background {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-image: url(luis-covarrubias-_LGrizFCwqM-unsplash);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.user_background {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-image: url(fernando-andrade-89h9zKa0L0g-unsplash);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
