@@ -81,8 +81,6 @@ group :production do
 gem 'mysql2'
 end
 
-gem 'rubocop', require:false
-gem 'rubocop-performance', require:false
-gem 'rubocop-rails', require:false
+gem 'rubocop-airbnb'
 
 gem 'geocoder'
