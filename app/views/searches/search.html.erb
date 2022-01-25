@@ -1,7 +1,10 @@
+<div class="seach_background">
+
 <% if @model == 'user' %>
-  <h2>投稿者の検索結果 "<%= @content %>"</h2>
+  <h2 class="search">投稿者の検索結果 "<%= @content %>"</h2>
   <%= render 'users/index', users: @records %>
 <% else @model == 'post_image' %>
-  <h2>店名の検索結果 "<%= @content %>"</h2>
+  <h2 class="search">店名の検索結果 "<%= @content %>"</h2>
     <%= render 'post_images/index', post_images: @records %>
 <% end %>
+</div>
