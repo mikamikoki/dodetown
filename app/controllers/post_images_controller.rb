@@ -48,6 +48,7 @@ class PostImagesController < ApplicationController
    end
   end
 
+
   def edit
    @post_image = PostImage.find(params[:id])
   end
