@@ -23,7 +23,12 @@ class PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
+    @post_image.score = Language.get_data(post_image_params[:caption])
     if @post_image.save
+    tags = Vision.get_image_data(@post_image)
+    tags.each do |tag|
+      @post_image.tags.create(name: tag)
+    end
       redirect_to root_path
       flash[:notice] = "投稿しました！"
     else

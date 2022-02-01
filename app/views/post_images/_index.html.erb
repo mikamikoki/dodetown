@@ -33,8 +33,12 @@
               <strong><i class="far fa-flag"></i><span> <%= post_image.shop_name %></span></strong>
             <% end %>
           </p>
+          <% post_image.tags.each do |tag| %>
+          <span class="label"><%= tag.name %></span>
+          <% end %>
           <p class="card-text">住所：<%= post_image.address %></p>
           <p class="card-text">説明：<%= post_image.caption %></p>
+          <span class="sentiment-score">説明文の感情分析スコア<%= post_image.score %></span>
           <span><i class="fas fa-user"></i> By <%= post_image.user.name %></span>
           <div id="favorite_buttons_<%= post_image.id %>">
           <%= render "favorites/favorite", post_image: post_image, current_user: current_user %>
